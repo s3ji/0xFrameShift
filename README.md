@@ -11,6 +11,10 @@
 
 [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Modes](#-processing-modes) • [Configuration](#-configuration) • [Troubleshooting](#-troubleshooting) • [Contributing](#-contributing)
 
+---
+
+<img width="498" height="212" alt="0xFrameShift" src="https://github.com/user-attachments/assets/b42285b0-da80-4415-b0ea-647c18e357bd" />
+
 </div>
 
 ---
