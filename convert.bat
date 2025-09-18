@@ -48,7 +48,7 @@ ECHO "Quality Settings: Fast preset, CRF=20, All uniqueness features enabled"
 ECHO "Processing with pre-generated random values for maximum speed..."
 
 SET FILE_INDEX=0
-for %%f in (input\*) do (
+for %%f in (input\*.mp4 input\*.mov input\*.avi input\*.mkv input\*.wmv input\*.flv input\*.webm) do (
     SET /A FILE_INDEX+=1
     SET "INPUT_FILENAME=%%f"
     CALL :ProcessSingleFile "%%f" !FILE_INDEX!
@@ -79,9 +79,9 @@ SET CODEC_CHOICE=!CODEC_%IDX%!
 
 ::Set filename
 IF %RAND_FILENAME%==1 (
-    SET "OUTPUT_FILENAME=!FILENAME_%IDX%!_reel.mp4"
+    SET "OUTPUT_FILENAME=!FILENAME_%IDX%!_vid.mp4"
 ) ELSE (
-    for %%x in ("!INPUT_FILE!") do SET "OUTPUT_FILENAME=%%~nx_reel_processed.mp4"
+    for %%x in ("!INPUT_FILE!") do SET "OUTPUT_FILENAME=%%~nx_vid_processed.mp4"
 )
 
 ::Set codec based on pre-generated choice
@@ -163,7 +163,7 @@ IF EXIST "output\!OUTPUT_FILENAME!" (
     ::Alternative container creation - PRESERVED  
     SET CONTAINER_CHOICE=!CONTAINER_%IDX%!
     IF !CONTAINER_CHOICE! LEQ 2 (
-        SET ALT_OUTPUT=!ALT_NAME_%IDX%!_reel_alt.mp4
+        SET ALT_OUTPUT=!ALT_NAME_%IDX%!_vid_alt.mp4
         ffmpeg -hide_banner -loglevel error -i "output\!OUTPUT_FILENAME!" -c copy "output\!ALT_OUTPUT!" >nul 2>&1
     )
 
